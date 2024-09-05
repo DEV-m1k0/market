@@ -16,13 +16,13 @@
 
 <div class="header row align-content-center">
     <div class="col-6 text-end">
-        <input type="search">
+        <input type="search search" placeholder="Поиск">
     </div>
     <div class="col-1 text-start">
-        <button type="button">Поиск</button>
+        <button type="button" class="btn btn-sm btn-outline-success">Поиск</button>
     </div>
     <div class="col text-center">
-        <i class="fa-regular fa-user"></i>
+        <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
     </div>
     <div class="col text-center">
         <i class="fa-solid fa-basket-shopping"></i>
@@ -30,7 +30,15 @@
 </div>
 
 <div class="content">
-    <h1>some item</h1>
+    
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 </div>
 
 {% endblock %}

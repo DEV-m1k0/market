@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'login',
     'main_page',
 ]
@@ -52,6 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+
+LOGIN_REDIRECT_URL = '/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
