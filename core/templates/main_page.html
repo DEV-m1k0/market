@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block links %}
+
+<link rel="stylesheet" href="{% static 'main_page.css' %}">
+
+{% endblock %}
+
+
+{% block title %} Основная страница {% endblock %}
+
+
+{% block body %}
+
+<div class="header row align-content-center">
+    <div class="col-6 text-end">
+        <input type="search">
+    </div>
+    <div class="col-1 text-start">
+        <button type="button">Поиск</button>
+    </div>
+    <div class="col text-center">
+        <i class="fa-regular fa-user"></i>
+    </div>
+    <div class="col text-center">
+        <i class="fa-solid fa-basket-shopping"></i>
+    </div>
+</div>
+
+<div class="content">
+    <h1>some item</h1>
+</div>
+
+{% endblock %}

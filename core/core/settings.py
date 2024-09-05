@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login',
+    'main_page',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
-STATICFILE_DIRS = BASE_DIR / 'static'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_ROOT = BASE_DIR / 'data'
+MEDIA_URL = '/media/'
 
 TEMPLATES = [
     {
