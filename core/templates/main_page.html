@@ -14,31 +14,38 @@
 
 {% block body %}
 
-<div class="header row align-content-center">
-    <div class="col-6 text-end">
-        <input type="search search" placeholder="Поиск">
-    </div>
-    <div class="col-1 text-start">
-        <button type="button" class="btn btn-sm btn-outline-success">Поиск</button>
-    </div>
-    <div class="col text-center">
-        <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
-    </div>
-    <div class="col text-center">
-        <i class="fa-solid fa-basket-shopping"></i>
+<div class="container-fluid">
+    <div class="row header align-items-center">
+        <div class="col-6 text-end">
+            <input type="search search" placeholder="Поиск">
+        </div>
+        <div class="col-1 text-start">
+            <button type="button" class="btn btn-sm btn-outline-success">Поиск</button>
+        </div>
+        <div class="col text-center">
+            <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
+        </div>
+        <div class="col text-center">
+            <i class="fa-solid fa-basket-shopping"></i>
+        </div>
     </div>
 </div>
 
-<div class="content">
-    
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container">
+    <div class="row justify-content-between">
+    {% for product in products %}
+        <div class="col-4">
+            <div class="card my-2" style="width: 18rem;">
+                <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
         </div>
-      </div>
+    {% endfor %}
+</div>
 </div>
 
 {% endblock %}

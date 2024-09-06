@@ -1,13 +1,12 @@
 .header {
     background-color: gray;
     height: 100px;
-    margin-top: 2%;
-    margin-bottom: 2%;
 }
 
 .content {
-    height: 80vh;
     background-color: aqua;
-    margin-left: 2%;
-    margin-right: 2%;
+}
+
+.card {
+    height: 500px;
 }
