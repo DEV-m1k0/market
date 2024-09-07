@@ -34,19 +34,19 @@
 
 <div class="container">
     <div class="row justify-content-between">
-    {% for product in products %}
-        <div class="col-4">
-            <div class="card my-2" style="width: 18rem;">
-                <img src="{{product.image.url}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">{{product.title}}</h5>
-                <p class="card-text">{{product.description}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        {% for product in products %}
+            <div class="col-4">
+                <div class="card my-2" style="width: 18rem;">
+                    <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
