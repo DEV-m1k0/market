@@ -5,10 +5,12 @@
 {% block body %}
 
 <h1>Ваша корзина</h1>
-{% for product in items %}
+<ul>
+    {% for product in items %}
 
-    {{product.description}}
+    <li>{{product.title}}</li>
 
 {% endfor %}
+</ul>
 
 {% endblock %}

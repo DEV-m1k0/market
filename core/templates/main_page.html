@@ -41,9 +41,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.description}}</p>
-                        <form method="post">
+                        <form action="{% url 'add_product' product.id %}" method="post">
                             {% csrf_token %}
-                            <input type="hidden" name="product_id" value="{{product.id}}">
                             <button type="submit" class="btn btn-sm btn-primary">Добавить в корзину</button>
                         </form>
                     </div>

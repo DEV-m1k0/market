@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main_page.views import MainPage
-from cart.views import CartView
+from cart.views import CartView, addProductToCart
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,4 +26,5 @@ urlpatterns = [
     path('', MainPage.as_view(), name='main_page'),
     path('user/', include('rest_framework.urls')),
     path('cart/', CartView.as_view(), name='cart'),
+    path('cart/<int:product_id>/', addProductToCart, name='add_product'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
