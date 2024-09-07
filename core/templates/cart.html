@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+<h1>Ваша корзина</h1>
+<ul>
+    {% for product in items %}
+
+    <li>{{product.title}}</li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}

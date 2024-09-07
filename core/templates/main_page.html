@@ -14,31 +14,42 @@
 
 {% block body %}
 
-<div class="header row align-content-center">
-    <div class="col-6 text-end">
-        <input type="search search" placeholder="Поиск">
-    </div>
-    <div class="col-1 text-start">
-        <button type="button" class="btn btn-sm btn-outline-success">Поиск</button>
-    </div>
-    <div class="col text-center">
-        <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
-    </div>
-    <div class="col text-center">
-        <i class="fa-solid fa-basket-shopping"></i>
+<div class="container-fluid">
+    <div class="row header align-items-center">
+        <div class="box col-6">
+            <div class="container-1">
+                <span class="icon"><i class="fa fa-search"></i></span>
+                <input type="search" id="search" placeholder="Поиск">
+                <button type="submit" class="btn btn-outline-light mx-2">Найти</button>
+            </div>        
+        </div>
+        <div class="col text-center">
+            <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
+        </div>
+        <div class="col text-center">
+            <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
     </div>
 </div>
 
-<div class="content">
-    
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+<div class="container">
+    <div class="row justify-content-between">
+        {% for product in products %}
+            <div class="col-3 my-3">
+                <div class="card" style="width: 13rem;">
+                    <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <form action="{% url 'add_product' product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-primary">Добавить в корзину</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
