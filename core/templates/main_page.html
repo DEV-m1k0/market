@@ -16,17 +16,18 @@
 
 <div class="container-fluid">
     <div class="row header align-items-center">
-        <div class="col-6 text-end">
-            <input type="search search" placeholder="Поиск">
-        </div>
-        <div class="col-1 text-start">
-            <button type="button" class="btn btn-sm btn-outline-success">Поиск</button>
+        <div class="box col-6">
+            <div class="container-1">
+                <span class="icon"><i class="fa fa-search"></i></span>
+                <input type="search" id="search" placeholder="Поиск">
+                <button type="submit" class="btn btn-outline-light mx-2">Найти</button>
+            </div>        
         </div>
         <div class="col text-center">
             <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
         </div>
         <div class="col text-center">
-            <i class="fa-solid fa-basket-shopping"></i>
+            <a href=""><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
     </div>
 </div>
