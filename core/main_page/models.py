@@ -31,4 +31,4 @@ class CartItem(models.Model):
     products = models.ManyToManyField(to=Product)
 
     def __str__(self) -> str:
-        return str(self.cart)
+        return "Продукты из " + str(self.cart)

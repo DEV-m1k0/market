@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+<h1>Ваша корзина</h1>
+{% for product in items %}
+
+    {{product.description}}
+
+{% endfor %}
+
+{% endblock %}
