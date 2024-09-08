@@ -1,10 +1,14 @@
+body {
+    background-color: #93c5e72e;
+}
+
 .button-back {
     position: absolute;
 }
 
 .header {
     height: 100px;
-    background: #4f5b66;
+    background: #62A8D1;
 }
 
 .name-header {

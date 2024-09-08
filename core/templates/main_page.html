@@ -24,11 +24,15 @@
             </div>        
         </div>
         <div class="col text-center">
-            <a href="{% url 'rest_framework:login' %}"><i class="fa-regular fa-user"></i></a>
-        </div>
-        <div class="col text-center">
             <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
+        {% if request.user.is_authenticated %}
+            <div class="col text-center ">{{user}} | <a href="{% url 'logout' %}">Выход</a></div>
+        {% else %}
+            <div class="col text-center">
+                <a href="{% url 'login' %}">Вход</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 

@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'rest_framework',
     'login',
     'main_page',
     'cart',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,6 +60,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/user/login/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
