@@ -85,3 +85,7 @@
 .text-center a i {
     font-size: 40px;
 }
+
+.tag {
+    position: absolute;
+}

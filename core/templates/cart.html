@@ -2,15 +2,38 @@
 {% load static %}
 
 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'cart.css' %}">
+{% endblock %}
+
+
 {% block body %}
 
-<h1>Ваша корзина</h1>
-<ul>
-    {% for product in items %}
+<div class="container-fluid header align-content-center">
+    <div class="row">
+        <div class="button-back col-1"><a class="btn btn-light btn-sm" href="{% url 'main_page' %}">Назад</a></div>
+        <div class="name-header col text-center"><h1>Ваша корзина</h1></div>
+    </div>
+</div>
 
-    <li>{{product.title}}</li>
-
-{% endfor %}
-</ul>
+<div class="container">
+    <div class="row justify-content-between">
+        {% for product in items %}
+            <div class="col-3 my-3">
+                <div class="card" style="width: 13rem;">
+                    <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <form action="{% url 'del_product' product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
