@@ -17,14 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main_page.views import MainPage
-from cart.views import CartView, addProductToCart
+from login.views import LoginView
+from cart.views import CartView, addProductToCart, delProductOfCart
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainPage.as_view(), name='main_page'),
-    path('user/', include('rest_framework.urls')),
+    path('user/login/', LoginView.as_view(), name='login'),
+    path('user/logout/', LogoutView.as_view(), name='logout'),
     path('cart/', CartView.as_view(), name='cart'),
     path('cart/<int:product_id>/', addProductToCart, name='add_product'),
+    path('cart/del/<int:product_id>/', delProductOfCart, name='del_product'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container d-flex justify-content-center align-items-center h-100">
+        <div class="main-block">
+            <form action="" method="post">
+                <div class="m-5"><h2 class="text-center">Авторизация</h2></div>
+                <div class="d-flex flex-column mx-5">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                </div>
+                <div class="my-5 d-flex">
+                    <div class="w-100 ms-5"><a href="{% url 'main_page' %}" class="btn btn-sm btn-light back">Назад</a></div>
+                    <div class="me-5 btn-login"><button type="submit" class="btn btn-primary">Войти</button></div>
+                </div>
+                <div class="w-100 pe-5 text-end mb-5"><a href="">Нет аккаунта?</a></div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
