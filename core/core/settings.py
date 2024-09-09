@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'login',
     'main_page',
     'cart',
+    'registr'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

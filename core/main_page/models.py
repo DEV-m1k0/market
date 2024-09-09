@@ -20,7 +20,7 @@ class CartItem(models.Model):
     "Предметы в корзине"
     
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(to=Product, blank=True, null=True)
+    products = models.ManyToManyField(to=Product, blank=True)
 
     def __str__(self) -> str:
         return "Продукты из " + str(self.user)
