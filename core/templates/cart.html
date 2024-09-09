@@ -28,6 +28,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.description}}</p>
+                        <div class="text-end">
+                            <p class="text-body-secondary">{{product.price}} руб.</p>
+                        </div>
                         <form action="{% url 'del_product' product.id %}" method="post">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
