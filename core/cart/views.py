@@ -31,19 +31,26 @@ class CartView(LoginRequiredMixin, TemplateView):
             return render(request, template_name='cart.html', context=context)
         
         except:
-            return HttpResponse("Продуктов в корзине нет")
+            return render(request, template_name='cart.html')
     
 
 @login_required()
 def addProductToCart(request: HttpRequest, product_id):
 
     if request.method == 'POST':
+
         product = get_object_or_404(Product, id=product_id)
 
-        if (product in CartItem.objects.all()[0].products.all()) == False:
+        print()
+
+        try:
             user_cart = CartItem.objects.get(user=request.user)
             user_cart.products.add(product)
 
+        except:
+            cart = CartItem.objects.create(user=request.user)
+            cart.products.add(product)
+            
 
     return HttpResponseRedirect('/')
 
