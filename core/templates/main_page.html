@@ -18,10 +18,16 @@
     <div class="row header align-items-center">
         <div class="box col-6">
             <div class="container-1">
-                <span class="icon"><i class="fa fa-search"></i></span>
-                <input type="search" id="search" placeholder="Поиск">
-                <button type="submit" class="btn btn-outline-light mx-2">Найти</button>
-            </div>        
+                <form method="post">
+                    {% csrf_token %}
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    {% for field in search %}
+                        {{field}}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-outline-light mx-2">Найти</button>
+                    <a href="{% url 'main_page' %}" class="btn btn-outline-light btn-sm mx-2">Обновить страницу</a>
+                </form>
+            </div>
         </div>
         <div class="col text-center">
             <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
