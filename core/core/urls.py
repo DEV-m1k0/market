@@ -23,6 +23,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 from registr.views import RegUser
+from admin_panel.views import AdminPanelView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,4 +34,5 @@ urlpatterns = [
     path('cart/', CartView.as_view(), name='cart'),
     path('cart/<int:product_id>/', addProductToCart, name='add_product'),
     path('cart/del/<int:product_id>/', delProductOfCart, name='del_product'),
+    path('user/admin/', AdminPanelView.as_view(), name='admin_panel'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -32,6 +32,11 @@
         <div class="col text-center">
             <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
+
+        {% if request.user.is_staff %}
+            <div class="col"><a href="{% url 'admin_panel' %}" class="btn btn-light btn-sm">Админ панель</a></div>
+        {% endif %}
+
         {% if request.user.is_authenticated %}
             <div class="col text-center ">{{user}} | <a href="{% url 'logout' %}">Выход</a></div>
         {% else %}
