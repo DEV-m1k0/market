@@ -22,12 +22,14 @@ from cart.views import CartView, addProductToCart, delProductOfCart
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
+from registr.views import RegUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainPage.as_view(), name='main_page'),
     path('user/login/', LoginView.as_view(), name='login'),
     path('user/logout/', LogoutView.as_view(), name='logout'),
+    path('user/reg/', RegUser.as_view(), name = 'reg'),
     path('cart/', CartView.as_view(), name='cart'),
     path('cart/<int:product_id>/', addProductToCart, name='add_product'),
     path('cart/del/<int:product_id>/', delProductOfCart, name='del_product'),

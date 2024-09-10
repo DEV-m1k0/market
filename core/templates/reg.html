@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'reg.css' %}">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="main-box py-5 px-5 rounded-3">
+        <form action="" method="post">
+            <div><h1 class="text-center">Регистрация</h1></div>
+            {% csrf_token %}
+            <div class="my-5">{{reg_form|crispy}}</div>
+            <div><button type="submit" class="btn btn-primary">Зарегестрироваться</button></div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

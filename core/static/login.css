@@ -4,7 +4,6 @@ body {
 }
 
 .main-block {
-    position: absolute;
     width: 500px;
     background: #ffffff;
     box-shadow: 0px 0px 10px gray;
