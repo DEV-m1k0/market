@@ -51,3 +51,8 @@ body {
 	font-size: 16px;
 	font-weight: 600;
 }
+
+.buy-all button[type='submit'] {
+    width: 30vw;
+    height: 5vh;
+}
