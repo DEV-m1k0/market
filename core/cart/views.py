@@ -54,9 +54,8 @@ def addProductToCart(request: HttpRequest, product_id):
 def delProductOfCart(request: HttpRequest, product_id):
 
     if request.method == 'POST':
-        products_from_cart = CartItem.objects.all()[0]
+        products_from_cart = CartItem.objects.get(user=request.user)
         product = get_object_or_404(Product, id=product_id)
-
         products_from_cart.products.remove(product)
 
         return HttpResponseRedirect('/cart/')
