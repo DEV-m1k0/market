@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="col text-center">
-            <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
+            <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i>{{count_products}}</a>
         </div>
 
         {% if request.user.is_staff %}

@@ -41,10 +41,13 @@ def addProductToCart(request: HttpRequest, product_id):
         try:
             user_cart = CartItem.objects.get(user=request.user)
             user_cart.products.add(product)
+            user_cart.counter += 1
 
         except:
-            cart = CartItem.objects.create(user=request.user)
-            cart.products.add(product)
+            user_cart = CartItem.objects.create(user=request.user)
+            user_cart.products.add(product)
+            user_cart.counter += 1
+            
             
 
     return HttpResponseRedirect('/')
