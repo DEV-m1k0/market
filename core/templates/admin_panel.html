@@ -1,13 +1,57 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 {% load static %}
+{% include 'base_admin.html' %}
 
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'admin_panel.css' %}">
+{% endblock %}
+
+
+{% block title %} Панель администратора {% endblock %}
 
 
 {% block body %}
 
+<div class="container-fluid header align-content-center">
+    <div class="row">
+        <div class="col-1 position-absolute">
+            <a href="{% url 'main_page' %}" class="btn btn-sm btn-light">Назад</a>
+        </div>
+        <div class="col text-center">
+            <h1 class="text-white">Админ панель</h1>
+        </div>
+    </div>
+</div>
+
 <div class="container">
-    <a href="{% url 'main_page' %}">Назад</a>
-    <h1>Админ панель</h1>
+    
+    <div class="content d-flex justify-content-around align-items-center h-100">
+        <a href="" class="text-black text-decoration-none block-add-employer rounded-3 px-4">
+            <div class="text-center mt-3"><h3>Товары</h3></div>
+            <div class="text-center my-4"><i class="fa fa-store"></i></div>
+            <hr>
+            <div class=""><p class="text-secondary">Возможности:</p>
+                <p class="text-secondary"> - Просмотр всех товаров;</p>
+                <p class="text-secondary"> - Редактирование;</p>
+                <p class="text-secondary"> - Добавление;</p>
+                <p class="text-secondary"> - Удаление;</p>
+            </p></div>
+        </a>
+    
+        <a href="" class="text-black text-decoration-none block-add-employer rounded-3 px-4">
+            <div class="text-center mt-3"><h3>Сотрудники</h3></div>
+            <div class="text-center my-4"><i class="fa fa-users"></i></div>
+            <hr>
+            <div class=""><p class="text-secondary">Возможности:</p>
+                <p class="text-secondary"> - Просмотр всех сотрудников;</p>
+                <p class="text-secondary"> - Редактирование;</p>
+                <p class="text-secondary"> - Добавление;</p>
+                <p class="text-secondary"> - Удаление;</p>
+            </p></div>
+        </a>
+    </div>
+
 </div>
 
 {% endblock %}
