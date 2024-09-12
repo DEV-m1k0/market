@@ -1,0 +1,31 @@
+body {
+    background: white;
+    height: 81vh;
+}
+
+.header {
+    background-color: #62A8D1;
+    height: 100px;
+}
+
+.block-add-product {
+    width: 250px;
+    box-shadow: 0px 0px 3px grey;
+}
+
+.block-add-product i{
+    font-size: 50px;
+}
+
+.block-add-employer {
+    width: 250px;
+    box-shadow: 0px 0px 3px grey;
+}
+
+.block-add-employer i{
+    font-size: 50px;
+}
+
+.container {
+    height: 100%;
+}

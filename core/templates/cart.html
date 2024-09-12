@@ -24,22 +24,45 @@
         {% for product in items %}
             <div class="col-3 my-3">
                 <div class="card" style="width: 13rem;">
-                    <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                    <div class="d-flex">
+                        <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                        <form class="position-absolute w-100 text-end" action="{% url 'del_product' product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i></button>
+                        </form>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.description}}</p>
                         <div class="text-end">
                             <p class="text-body-secondary">{{product.price}} руб.</p>
                         </div>
-                        <form action="{% url 'del_product' product.id %}" method="post">
+                        <form class="d-flex" action="" method="post">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                            <button type="submit" class="btn btn-sm btn-primary">Купить</button>
+                            <div class="number d-flex justify-content-end w-100 ms-4">
+                                <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+                                {% for field in counter %}
+                                    {{field}}
+                                {% endfor %}
+                                <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+</div>
+
+<div class="container-fluid text-center buy-all">
+    <form action="" method="post" class="fixed-bottom">
+        {% csrf_token %}
+
+        <button type="submit" class="mb-5 btn btn-primary">Купить все</button>
+
+    </form>
 </div>
 
 {% endblock %}

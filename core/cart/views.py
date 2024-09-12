@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse
+from .forms import CounterForm
 from main_page.models import Product, CartItem
 from django.contrib.auth.decorators import login_required
 
@@ -21,7 +21,10 @@ class CartView(LoginRequiredMixin, TemplateView):
             cart_item = CartItem.objects.filter(user=request.user)
             products = cart_item[0].products.all()
 
-            context = {'items': products}
+            context = {
+                'items': products,
+                'counter': CounterForm
+                }
 
             return render(request, template_name='cart.html', context=context)
         
@@ -41,10 +44,13 @@ def addProductToCart(request: HttpRequest, product_id):
         try:
             user_cart = CartItem.objects.get(user=request.user)
             user_cart.products.add(product)
+            user_cart.counter += 1
 
         except:
-            cart = CartItem.objects.create(user=request.user)
-            cart.products.add(product)
+            user_cart = CartItem.objects.create(user=request.user)
+            user_cart.products.add(product)
+            user_cart.counter += 1
+            
             
 
     return HttpResponseRedirect('/')

@@ -21,6 +21,7 @@ class CartItem(models.Model):
     
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     products = models.ManyToManyField(to=Product, blank=True)
+    counter = models.PositiveIntegerField(default=0, editable=False)
 
     def __str__(self) -> str:
         return "Продукты из " + str(self.user)
