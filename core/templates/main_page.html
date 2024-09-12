@@ -14,52 +14,54 @@
 
 {% block body %}
 
-<div class="container-fluid">
-    <div class="row header align-items-center">
-        <div class="box col-6">
-            <div class="container-1">
-                <form method="post">
-                    {% csrf_token %}
-                    <span class="icon"><i class="fa fa-search"></i></span>
-                    {% for field in search %}
-                        {{field}}
-                    {% endfor %}
-                    <button type="submit" class="btn btn-outline-light mx-2">Найти</button>
-                    <a href="{% url 'main_page' %}" class="btn btn-outline-light btn-sm mx-2">Обновить страницу</a>
-                </form>
+<div class="w-100 header">
+    <div class="container h-100 align-content-center">
+        <div class="row align-items-center">
+            <div class="box col-6 col">
+                <div class="container-1">
+                    <form method="post">
+                        {% csrf_token %}
+                        <span class="icon"><i class="fa fa-search"></i></span>
+                        {% for field in search %}
+                            {{field}}
+                        {% endfor %}
+                        <button type="submit" class="btn btn-outline-light mx-2">Найти</button>
+                        <a href="{% url 'main_page' %}" class="btn btn-outline-light btn-sm mx-2">Показать все</a>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col text-center">
-            <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i>{{count_products}}</a>
-        </div>
-
-        {% if request.user.is_staff %}
-            <div class="col"><a href="{% url 'admin_panel' %}" class="btn btn-light btn-sm">Админ панель</a></div>
-        {% endif %}
-
-        {% if request.user.is_authenticated %}
-            <div class="col text-center ">{{user}} | <a href="{% url 'logout' %}">Выход</a></div>
-        {% else %}
             <div class="col text-center">
-                <a href="{% url 'login' %}">Вход</a>
+                <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i>{{count_products}}</a>
             </div>
-        {% endif %}
+    
+            {% if request.user.is_staff %}
+                <div class="col"><a href="{% url 'admin_panel' %}" class="btn btn-light btn-sm">Админ панель</a></div>
+            {% endif %}
+    
+            {% if request.user.is_authenticated %}
+                <div class="col text-center ">{{user}} | <a href="{% url 'logout' %}">Выход</a></div>
+            {% else %}
+                <div class="col text-center">
+                    <a href="{% url 'login' %}">Вход</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row justify-content-between">
+    <div class="row">
         {% for product in products %}
-            <div class="col-3 my-3">
-                <div class="card" style="width: 13rem;">
-                    <img src="{{product.image.url}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{product.title}}</h5>
-                        <p class="card-text">{{product.description}}</p>
+            <div class="col-2 my-3 d-flex justify-content-center">
+                <div class="" style="width: 13rem;">
+                    <div class="shadow rounded-2"><img src="{{product.image.url}}" class="card-img-top rounded-2" alt="..."></div>
+                    <div class="mt-2 shadow rounded-2 p-4">
+                        <h5 class="">{{product.title}}</h5>
+                        <p class="">{{product.description}}</p>
                         <div class="text-end"><p class="text-body-secondary">{{product.price}} руб.</p></div>
                         <form action="{% url 'add_product' product.id %}" method="post">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-sm btn-primary">Добавить в корзину</button>
+                            <button type="submit" class="btn btn-sm btn-primary w-100"><i class="fa fa-basket-shopping"></i></button>
                         </form>
                     </div>
                 </div>
