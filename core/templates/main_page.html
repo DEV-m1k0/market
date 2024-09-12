@@ -14,10 +14,10 @@
 
 {% block body %}
 
-<div class="w-100 header">
+<nav class="w-100 header">
     <div class="container h-100 align-content-center">
         <div class="row align-items-center">
-            <div class="box col-6 col">
+            <div class="box col-8">
                 <div class="container-1">
                     <form method="post">
                         {% csrf_token %}
@@ -30,34 +30,65 @@
                     </form>
                 </div>
             </div>
-            <div class="col text-center">
-                <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i>{{count_products}}</a>
+
+            <div class="col text-end icon-cart d-md-block d-none">
+                <a href="{% url 'cart' %}" class="text-white text-decoration-none"><i class="fa-solid fa-basket-shopping" style="font-size: 32px;"></i>{{count_products}}</a>
             </div>
     
-            {% if request.user.is_staff %}
-                <div class="col"><a href="{% url 'admin_panel' %}" class="btn btn-light btn-sm">Админ панель</a></div>
-            {% endif %}
+            <!-- {% if request.user.is_staff %}
+                <div class="col text-center"><a href="{% url 'admin_panel' %}" class="btn btn-light btn-sm text-black">Админ панель</a></div>
+            {% endif %} -->
     
             {% if request.user.is_authenticated %}
-                <div class="col text-center ">{{user}} | <a href="{% url 'logout' %}">Выход</a></div>
+                <div class="col text-end text-white logined d-md-block d-none">{{user}} | <a href="{% url 'logout' %}" class="text-white text-decoration-none">Выход</a></div>
             {% else %}
-                <div class="col text-center">
+                <div class="col text-end d-md-block d-none">
                     <a href="{% url 'login' %}">Вход</a>
                 </div>
             {% endif %}
+
+
+            <div class="col">
+                <div class="navbar d-md-none d-flex justify-content-end">
+                    <button aria-expanded="false" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#burger" aria-controls="burger"><span class="navbar-toggler-icon"></span></button>
+                </div>
+    
+                <div class="collapse position-absolute" id="burger">
+                    <div class="card card-body">
+                        <ul>
+                            <li>
+                                <a href="{% url 'cart' %}" class="text-black text-decoration-none">
+                                    <i class="fa-solid fa-basket-shopping" style="font-size: 32px;"></i>{{count_products}}
+                                </a>
+                            </li>
+                            <li>
+                                {% if request.user.is_authenticated %}
+                                    <div class="col text-end text-black logined">{{user}} | <a href="{% url 'logout' %}" class="text-black text-decoration-none">Выход</a></div>
+                                {% else %}
+                                    <div class="col text-end">
+                                        <a href="{% url 'login' %}">Вход</a>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+</nav>
 
 <div class="container">
-    <div class="row">
+
+    <div class="row d-flex justify-content-between">
         {% for product in products %}
-            <div class="col-2 my-3 d-flex justify-content-center">
-                <div class="" style="width: 13rem;">
-                    <div class="shadow rounded-2"><img src="{{product.image.url}}" class="card-img-top rounded-2" alt="..."></div>
-                    <div class="mt-2 shadow rounded-2 p-4">
+            <div class="my-card my-3">
+                <div class="">
+                    <div class="rounded-3 border border-1 border-black"><img src="{{product.image.url}}" class="card-img-top rounded-2" alt="..."></div>
+                    <div class="mt-2 shadow rounded-3 p-xl-3 p-2">
                         <h5 class="">{{product.title}}</h5>
-                        <p class="">{{product.description}}</p>
+                        <p class="w-100 overflow-scroll">{{product.description}}</p>
                         <div class="text-end"><p class="text-body-secondary">{{product.price}} руб.</p></div>
                         <form action="{% url 'add_product' product.id %}" method="post">
                             {% csrf_token %}

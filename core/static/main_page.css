@@ -71,10 +71,6 @@ body {
     background-color: aqua;
 }
 
-.card {
-    height: 100%;
-}
-
 .text-center a {
     color: #ffffff;
     text-decoration: none;
@@ -96,4 +92,50 @@ body {
 
 .tag {
     position: absolute;
+}
+
+.my-card {
+    width: 16rem;
+}
+
+@media (max-width: 992px) {
+    .logined {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .my-card {
+        width: 14rem;
+    }
+
+    .my-card h5 {
+        font-size: 18px;
+    }
+
+    .my-card p {
+        font-size: 14px;
+    }
+
+    .container-1 input#search {
+        width: 250px;
+        height: 40px;
+    }
+
+    .header .row {
+        height: 75px;
+    }
+
+    .container-1 .icon {
+        position: absolute;
+        z-index: 1;
+        margin-left: 15px;
+        margin-top: 10px;
+        color: #4f5b66;
+        float: left;
+    }
+
+    .icon-cart i{
+        font-size: 10px;
+    }
 }
